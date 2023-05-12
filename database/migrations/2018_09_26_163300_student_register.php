@@ -22,7 +22,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_marital_status', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 99);
             $table->text('description');
             $table->integer('position')->unsigned();
@@ -80,7 +80,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_family_relationship', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 99);
             $table->string('description')->default('');
             $table->integer('position')->unsigned();
@@ -173,7 +173,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_single_category', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 99);
             $table->integer('position')->unsigned();
 
@@ -234,7 +234,7 @@ class StudentRegister extends Migration
             ],
         ]);
         Schema::connection('mysql')->create('_z_single_data', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('single_category_id')->unsigned();
             $table->string('name', 99);
             $table->integer('position')->unsigned();
@@ -309,7 +309,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_country', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('iso', 6)->unique();
             $table->string('name', 99)->default('');
             $table->string('dname', 99)->default('');
@@ -575,7 +575,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_country_province', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('country_id')->unsigned();
             $table->string('name', 99);
             $table->string('code', 10)->default('xx');
@@ -607,7 +607,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_country_city', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('province_id')->unsigned();
             $table->string('name', 99);
             $table->string('code', 10)->default('xx');
@@ -639,7 +639,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_country_region', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('city_id')->unsigned();
             $table->string('name', 99);
             $table->string('code', 10)->default('xx');
@@ -671,7 +671,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_country_subregion', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('region_id')->unsigned();
             $table->string('name', 99);
             $table->string('code', 10)->default('xx');
@@ -703,7 +703,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_address_type', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 99);
             $table->string('description')->default('');
             $table->integer('position')->unsigned();
@@ -745,7 +745,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_address', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('line_1', 99);
             $table->string('line_2', 99)->default('');
             $table->string('line_3', 99)->default('');
@@ -785,7 +785,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_qualification', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('level_id')->unsigned()->default(1);
             $table->integer('title_id')->unsigned()->default(1);
             $table->integer('institute_id')->unsigned()->default(1);
@@ -815,7 +815,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('_z_work_detail', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('organization_id')->unsigned()->default(1);
             $table->integer('department_id')->unsigned()->default(1);
             $table->integer('designation_id')->unsigned()->default(1);
@@ -848,7 +848,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('student_family_id', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('family_code')->unsigned()->unique();
             $table->integer('address_type_id')->unsigned()->default(1);
             $table->integer('address_id')->unsigned()->default(1);
@@ -877,7 +877,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('student_family', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 99)->nullable();
             $table->string('first_name', 49)->default('');
             $table->string('last_name', 49)->default('');
@@ -941,7 +941,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('student_register', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('reg_id')->unsigned()->unique();
             $table->string('name', 99);
             $table->string('abridged_name', 18)->default('');
@@ -1014,7 +1014,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('student_emergency_contact', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('name', 49)->default('');
             $table->integer('family_id')->unsigned()->default(1);
             $table->integer('relationship_id')->unsigned();
@@ -1049,7 +1049,7 @@ class StudentRegister extends Migration
         |--------------------------------------------------------------------------
         */
         Schema::connection('mysql')->create('student_academic_record', function (Blueprint $table) {
-            $table->increments('id', true)->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->integer('academic_session_id')->unsigned();
             $table->integer('grade_id')->unsigned();
