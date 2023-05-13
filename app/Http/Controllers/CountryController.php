@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 Use Exception;
 
+use Validator;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,6 +28,16 @@ class CountryController extends Controller
 
     public function countrySave(Request $request){
         if(!is_null($request)) {
+
+            $rules = [
+                'name' => 'required|min:6'
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()){
+                return response()->json(['msg'=> 'Validator errors:' . $validator->errors()], 400);
+            }
+
             try {
                 $country = CountryModel::create($request->all());
                 return response()->json(['msg'=> 'Inserted success.', 'data' => $country], 201);
